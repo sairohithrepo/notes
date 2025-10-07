@@ -1,0 +1,299 @@
+Key Features of OOP in Java:
+Structures code into logical units (classes and objects)
+Keeps related data and methods together (encapsulation)
+Makes code modular, reusable and scalable
+Prevents unauthorized access to data
+Follows the DRY (Don’t Repeat Yourself) principle
+Characteristics of an OOP(Object Oriented Programming)
+The diagram below demonstrates the Java OOPs Concepts
+
+Types-of-OOPS-2
+OOP's concept
+1. Class
+A Class is a user-defined blueprint or prototype from which objects are created. It represents the set of properties or methods that are common to all objects of one type. Using classes, you can create multiple objects with the same behavior instead of writing their code multiple times. In general, class declarations can include these components in order: 
+
+Modifiers: A class can be public or have default access (Refer to this for details).
+Class name: The class name should begin with the initial letter capitalized by convention.
+Body: The class body is surrounded by braces, { }.
+2. Object
+An Object is a basic unit of Object-Oriented Programming that represents real-life entities. A typical Java program creates many objects, which as you know, interact by invoking methods. The objects are what perform your code, they are the part of your code visible to the viewer/user. An object mainly consists of: 
+
+State: It is represented by the attributes of an object. It also reflects the properties of an object.
+Behavior: It is represented by the methods of an object. It also reflects the response of an object to other objects.
+Identity: It is a unique name given to an object that enables it to interact with other objects.
+Method: A method is a collection of statements that perform some specific task and return the result to the caller.
+Example:
+
+
+
+public class Employee {
+    // Instance variables (non-static)
+    private String name;
+    private float salary;
+​
+    // Constructor
+    public Employee(String name, float salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+​
+    // getters method
+    public String getName() { return name; }
+    public float getSalary() { return salary; }
+​
+    // setters method
+    public void setName(String name) { this.name = name; }
+    public void setSalary(float salary) { this.salary = salary; }
+​
+    // Instance method
+    public void displayDetails() {
+        System.out.println("Employee: " + name);
+        System.out.println("Salary: " + salary);
+    }
+​
+    public static void main(String[] args) {
+        Employee emp = new Employee("Geek", 10000.0f);
+        emp.displayDetails();
+    }
+}
+
+Output
+Employee: Geek
+Salary: 10000.0
+Note: For more information, please refer to the article - Classes and Object.
+
+3. Abstraction
+Abstraction in Java is the process of hiding the implementation details and only showing the essential details or features to the user. It allows to focus on what an object does rather than how it does it. The unnecessary details are not displayed to the user.
+
+Note: In Java, abstraction is achieved by interfaces and abstract classes. We can achieve 100% abstraction using interfaces.
+
+Example:
+
+
+
+
+abstract class Vehicle {
+    // Abstract methods (what it can do)
+    abstract void accelerate();
+    abstract void brake();
+    
+    // Concrete method (common to all vehicles)
+    void startEngine() {
+        System.out.println("Engine started!");
+    }
+}
+​
+// Concrete implementation (hidden details)
+class Car extends Vehicle {
+    @Override
+    void accelerate() {
+        System.out.println("Car: Pressing gas pedal...");
+        // Hidden complex logic: fuel injection, gear shifting, etc.
+    }
+    
+    @Override
+    void brake() {
+        System.out.println("Car: Applying brakes...");
+        // Hidden logic: hydraulic pressure, brake pads, etc.
+    }
+}
+​
+public class Main {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car();
+        myCar.startEngine();  
+        myCar.accelerate();   
+        myCar.brake();        
+    }
+}
+
+Note: To learn more about the Abstraction refer to the Abstraction in Java article
+
+4. Encapsulation
+Encapsulation is defined as the process of wrapping data and the methods into a single unit, typically a class. It is the mechanism that binds together the code and the data. It manipulates. Another way to think about encapsulation is that it is a protective shield that prevents the data from being accessed by the code outside this shield. 
+
+Technically, in encapsulation, the variables or the data in a class is hidden from any other class and can be accessed only through any member function of the class in which they are declared.
+In encapsulation, the data in a class is hidden from other classes, which is similar to what data-hiding does. So, the terms "encapsulation" and "data-hiding" are used interchangeably.
+Encapsulation can be achieved by declaring all the variables in a class as private and writing public methods in the class to set and get the values of the variables.
+Encapsulation
+Encapsulation
+Example:
+
+
+
+
+class Employee {
+    // Private fields (encapsulated data)
+    private int id;
+    private String name;
+​
+    // Setter methods 
+    public void setId(int id) {
+        this.id = id;
+    }
+​
+    public void setName(String name) {
+        this.name = name;
+    }
+​
+    // Getter methods
+    public int getId() {
+        return id;
+    }
+​
+    public String getName() {
+        return name;
+    }
+}
+​
+public class Main {
+    public static void main(String[] args) {
+        Employee emp = new Employee();
+        
+        // Using setters
+        emp.setId(101);
+        emp.setName("Geek");
+​
+        // Using getters
+        System.out.println("Employee ID: " + emp.getId());
+        System.out.println("Employee Name: " + emp.getName());
+    }
+}
+
+Output
+Employee ID: 101
+Employee Name: Geek
+Note: To learn more about topic refer to Encapsulation in Java article.
+
+5. Inheritance 
+Inheritance is an important pillar of OOP (Object Oriented Programming). It is the mechanism in Java by which one class is allowed to inherit the features (fields and methods) of another class. We are achieving inheritance by using extends keyword. Inheritance is also known as "is-a" relationship.
+
+Example: Dog, Cat, Cow can be Derived Class of Animal Base Class. 
+
+inheritance-660x454
+Inheritance
+Let us discuss some frequently used important terminologies:
+
+Superclass: The class whose features are inherited is known as superclass (also known as base or parent class).
+Subclass: The class that inherits the other class is known as subclass (also known as derived or extended or child class). The subclass can add its own fields and methods in addition to the superclass fields and methods.
+Reusability: Inheritance supports the concept of "reusability", i.e. when we want to create a new class and there is already a class that includes some of the code that we want, we can derive our new class from the existing class. By doing this, we are reusing the fields and methods of the existing class.
+Example:
+
+
+
+
+// Superclass (Parent)
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating...");
+    }
+​
+    void sleep() {
+        System.out.println("Animal is sleeping...");
+    }
+}
+​
+// Subclass (Child) - Inherits from Animal
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking!");
+    }
+}
+​
+public class Main {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+​
+        // Inherited methods (from Animal)
+        myDog.eat();    
+        myDog.sleep();  
+​
+        // Child class method
+        myDog.bark();   
+    }
+}
+
+Output
+Animal is eating...
+Animal is sleeping...
+Dog is barking!
+Note: To learn more about topic refer to Inheritance in Java article.
+
+6. Polymorphism
+The word polymorphism means having many forms, and it comes from the Greek words poly (many) and morph (forms), this means one entity can take many forms. In Java, polymorphism allows the same method or object to behave differently based on the context, specially on the project's actual runtime class.
+
+polymorphism_in_java
+Polymorphism in Java
+Types of Polymorphism
+Polymorphism in Java is mainly of 2 types as mentioned below: 
+
+Method Overloading
+Method Overriding 
+Method Overloading and Method Overriding
+1. Method Overloading: Also, known as compile-time polymorphism, is the concept of Polymorphism where more than one method share the same name with different signature(Parameters) in a class. The return type of these methods can or cannot be same.
+
+2. Method Overriding: Also, known as run-time polymorphism, is the concept of Polymorphism where method in the child class has the same name, return-type and parameters as in parent class. The child class provides the implementation in the method already written.
+
+Below is the implementation of both the concepts:
+
+
+
+
+// Parent Class
+class Parent {
+    // Overloaded method (compile-time polymorphism)
+    public void func() {
+        System.out.println("Parent.func()");
+    }
+​
+    // Overloaded method (same name, different parameter)
+    public void func(int a) {
+        System.out.println("Parent.func(int): " + a);
+    }
+}
+​
+// Child Class
+class Child extends Parent {
+    // Overrides Parent.func(int) (runtime polymorphism)
+    @Override
+    public void func(int a) {
+        System.out.println("Child.func(int): " + a);
+    }
+}
+​
+public class Main {
+    public static void main(String[] args) {
+        Parent parent = new Parent();
+        Child child = new Child();
+        // Dynamic dispatch
+        Parent polymorphicObj = new Child();  
+​
+        // Method Overloading (compile-time)
+        parent.func();       
+        parent.func(10);    
+​
+        // Method Overriding (runtime)
+        child.func(20);     
+​
+        // Polymorphism in action
+        polymorphicObj.func(30);  
+    }
+}
+
+Output
+Parent.func()
+Parent.func(int): 10
+Child.func(int): 20
+Child.func(int): 30
+Advantage of OOPs over Procedure-Oriented Programming Language
+Object-oriented programming (OOP) offers several key advantages over procedural programming:
+
+By using objects and classes, you can create reusable components, leading to less duplication and more efficient development.
+It provides a clear and logical structure, making the code easier to understand, maintain, and debug.
+OOP supports the DRY (Don't Repeat Yourself) principle.This principle encourages minimizing code repetition, leading to cleaner, more maintainable code. Common functionalities are placed in a single location and reused, reducing redundancy.
+By reusing existing code and creating modular components, OOP allows for quicker and more efficient application development
+Disadvantages of OOPs
+OOP has concepts like classes, objects, inheritance etc. For beginners, this can be confusing and takes time to learn.
+If we write a small program, using OOP can feel too heavy. We might have to write more code than needed just to follow the OOP structure.
+The code is divided into different classes and layers, so in this, finding and fixing bugs can sometimes take more time.
+OOP creates a lot of objects, so it can use more memory compared to simple programs written in a procedural way.
